@@ -27,7 +27,7 @@ date_default_timezone_set('Asia/Jakarta');
 */
 //$what = explode('/', $_SERVER['REQUEST_URI']);
 //$config['base_url'] = "https://$_SERVER[HTTP_HOST]/";
-$config['base_url'] = "http://gunungmas-seluler.com/backdore/";
+$config['base_url'] = "http://gunungmas-seluler.com/backdoor/";
 
 /*
 |--------------------------------------------------------------------------
