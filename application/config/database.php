@@ -75,6 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
+	// 'hostname' => 'localhost',
+	// 'username' => 'root',
+	// 'password' => '',
+	// 'database' => 'db_jadiorder',
 	'hostname' => 'localhost',
 	'username' => 'gunn1374_root',
 	'password' => 'Padri0@@@',

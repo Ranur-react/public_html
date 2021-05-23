@@ -465,7 +465,7 @@ button{
 }
 .navbar-nav .nav-item.active .nav-link,
 .navbar-nav .nav-item:hover .nav-link{
-    color: #2c3e50;
+    color: rgba(255,255,255,1);
 }
 .dropdown-item:hover{
     background:#62e7fc;
