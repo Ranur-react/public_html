@@ -125,7 +125,7 @@ foreach($keyw->result() as $key){ $keywords .= ",".$key->nama; }
 	<?php } ?>
 
 	<header class="header1">
-		<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+		<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
 			<div class="container">
 				<a class="navbar-brand" href="<?=site_url()?>">
 					<img src="<?= base_url('cdn/assets/img/'.$set->logo) ?>" height="60" />
