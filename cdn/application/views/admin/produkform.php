@@ -1,3 +1,4 @@
+<?php error_reporting(E_ALL ^ E_NOTICE); ?>
 <a href="javascript:history.back()" class="btn btn-danger float-right"><i class="la la-times"></i> Batal</a>
 <?php if($id == 0){ ?>
 <h4 class="page-title">Tambah Produk Baru</h4>
@@ -25,6 +26,7 @@
 		$url = site_url("api/tambahproduk");
 	}
 	$varjum = $this->func->getVariasiJumlah($id);
+	$parent = $this->db->query("SELECT cp.kategori_path AS id,GROUP_CONCAT(cd2.nama ORDER BY cp.level_path SEPARATOR '&nbsp;&nbsp;&gt;&nbsp;&nbsp;') AS nama,c1.parent AS parent FROM blw_kategori_path cp LEFT JOIN blw_kategori c1 ON (cp.kategori_path=c1.id) LEFT JOIN blw_kategori c2 ON (cp.parent_path=c2.id) LEFT JOIN blw_kategori cd2 ON (cp.parent_path=cd2.id) LEFT JOIN blw_kategori cd1 ON (cp.kategori_path=cd1.id) GROUP BY cp.kategori_path ORDER BY nama ASC")->result_array();
 ?>
 <div class="card">
 	<div class="card-header">
@@ -95,13 +97,9 @@
 				<div class="col-md-6">
 					<select class="select2" name="idcat" required>
 						<option value="">- Pilih Kategori -</option>
-						<?php
-							$kat = $this->db->get("kategori");
-							foreach($kat->result() as $r){
-								$selec = ($id!=0 AND $data->idcat == $r->id) ? "selected" : "";
-								echo "<option value='".$r->id."' $selec>".$r->nama."</option>";
-							}
-						?>
+						<?php foreach ($parent as $p) { ?>
+							<option value="<?= $p['id'] ?>" <?= $p['id'] == $data->idcat ? 'selected' : null ?>><?= $p['nama'] ?></option>
+						<?php } ?>
 					</select>
 				</div>
 			</div>
