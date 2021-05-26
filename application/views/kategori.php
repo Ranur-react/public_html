@@ -20,6 +20,10 @@
 					<div class="cat-button">
 						<a href="<?=site_url("shop/")?>" class="btn btn-info bo-rad-23 p-l-16 p-r-16 m-r-4 m-b-12">Semua Kategori</a>
 						<?php 
+						$uriSegments = explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+						$lastUriSegment = array_pop($uriSegments);
+						?>
+						<?php
 							$idcat = $this->func->getKategori($url,"id","url");
 
 							$this->db->where("parent",0);
@@ -32,6 +36,27 @@
 							</a>
 						<?php
 							}
+						?>
+					</div>
+					<div class="cat-button">
+						<?php
+						$this->db->where("id",$idcat);
+						$rows = $this->db->get("kategori")->row();
+
+						$idchild = $this->func->getKategori($lastUriSegment,"id","url");
+						$this->db->from('kategori_path');
+						$this->db->join('kategori', 'kategori_path=id');
+						$this->db->where("parent_path", $idcat);
+						$this->db->where_not_in('kategori_path', $idcat);
+						$db = $this->db->get();
+						foreach ($db->result() as $r) {
+							$select = ($r->id == $idchild) ? "btn-success" : "btn-info";
+						?>
+							<a href="<?= site_url("kategori/" . $rows->url . "/" . $r->url) ?>" class="btn bo-rad-23 p-l-16 p-r-16 m-r-4 m-b-12 <?= $select ?>">
+								<?= ucwords(strtolower($r->nama)) ?>
+							</a>
+						<?php
+						}
 						?>
 					</div>
 				</div>
@@ -58,20 +83,24 @@
 								}
 							}
 
-							$where = "(nama LIKE '%$cari%' OR harga LIKE '%$cari%' OR hargareseller LIKE '%$cari%' OR hargaagen LIKE '%$cari%' OR deskripsi LIKE '%$cari%') AND status = 1 AND stok > 0 AND idcat = ".$idcat;
+							$where = "(nama LIKE '%$cari%' OR harga LIKE '%$cari%' OR hargareseller LIKE '%$cari%' OR hargaagen LIKE '%$cari%' OR deskripsi LIKE '%$cari%') AND status = 1 AND stok > 0 AND parent_path = ".$idchild;
+							$this->db->from('kategori_path');
+							$this->db->join('produk', 'kategori_path=idcat');
 							$this->db->where($where);
 							if(count($notin) > 0){
 								$this->db->where_not_in($notin);
 							}
-							$dbs = $this->db->get("produk");
+							$dbs = $this->db->get();
 							
+							$this->db->from('kategori_path');
+							$this->db->join('produk', 'kategori_path=idcat');
 							$this->db->where($where);
 							if(count($notin) > 0){
 								$this->db->where_not_in($notin);
 							}
 							$this->db->limit($perpage,($page-1)*$perpage);
 							$this->db->order_by($orderby);
-							$db = $this->db->get("produk");
+							$db = $this->db->get();
 							$totalproduk = 0;
 							foreach($db->result() as $r){
 								$level = isset($_SESSION["lvl"]) ? $_SESSION["lvl"] : 0;

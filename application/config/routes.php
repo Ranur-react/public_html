@@ -54,6 +54,7 @@ $route['404_override'] = 'home/_404';
 $route['translate_uri_dashes'] = TRUE;
 
 $route['kategori/(:any)'] = 'kategori/index/$1';
+$route['kategori/(:any)/(:any)'] = 'kategori/index/$1/$2';
 $route['produk/(:any)'] = 'produk/index/$1';
 $route['page/(:any)'] = 'page/index/$1';
 $route['blog/(:any)'] = 'blog/single/$1';
