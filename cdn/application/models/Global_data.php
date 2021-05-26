@@ -1140,4 +1140,14 @@ class Global_data extends CI_Model{
 		$out.= "</div>";
 		return $out;
 	}
+	public function destroy($kode)
+	{
+		$this->db->query("DELETE FROM blw_kategori_path WHERE kategori_path='$kode'");
+		$query = $this->db->query("SELECT * FROM blw_kategori_path WHERE parent_path='$kode'")->result_array();
+		foreach ($query as $result) {
+			$this->destroy($result['kategori_path']);
+		}
+		$this->db->query("DELETE FROM blw_kategori WHERE id='$kode'");
+		return true;
+	}
 }

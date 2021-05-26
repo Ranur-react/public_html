@@ -610,8 +610,10 @@ class Ngadimin extends CI_Controller {
 			foreach($dbs->result() as $R){
 				unlink("kategori/".$R->icon);
 			}
-			$this->db->where("id",$_POST["pro"]);
-			$this->db->delete("kategori");
+			$this->load->model('Global_data');
+			$this->Global_data->destroy($_POST["pro"]);
+			// $this->db->where("id",$_POST["pro"]);
+			// $this->db->delete("kategori");
 			
 			echo json_encode(array("success"=>true,"token"=> $this->security->get_csrf_hash()));
 		}else{
