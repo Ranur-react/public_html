@@ -34,3 +34,8 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 # Image
 #-------------------------
 /kategori/
+
+#-------------------------
+# Import
+#-------------------------
+/import/
