@@ -1,10 +1,16 @@
 <?php
-    if($id != 0){
-        $this->db->where("id",intval($id));
-        $db = $this->db->get("kategori");
-        foreach($db->result() as $r){
-        }
+error_reporting(E_ALL ^ E_NOTICE);
+if($id != 0){
+    $this->db->where("id",intval($id));
+    $db = $this->db->get("kategori");
+    foreach($db->result() as $r){
     }
+}
+if ($id != 0) {
+    $parent = $this->db->query("SELECT cp.kategori_path AS id,GROUP_CONCAT(cd2.nama ORDER BY cp.level_path SEPARATOR '&nbsp;&nbsp;&gt;&nbsp;&nbsp;') AS nama,c1.parent AS parent FROM blw_kategori_path cp LEFT JOIN blw_kategori c1 ON (cp.kategori_path=c1.id) LEFT JOIN blw_kategori c2 ON (cp.parent_path=c2.id) LEFT JOIN blw_kategori cd2 ON (cp.parent_path=cd2.id) LEFT JOIN blw_kategori cd1 ON (cp.kategori_path=cd1.id) WHERE cp.kategori_path NOT IN($id) GROUP BY cp.kategori_path ORDER BY nama ASC")->result_array();
+} else {
+    $parent = $this->db->query("SELECT cp.kategori_path AS id,GROUP_CONCAT(cd2.nama ORDER BY cp.level_path SEPARATOR '&nbsp;&nbsp;&gt;&nbsp;&nbsp;') AS nama,c1.parent AS parent FROM blw_kategori_path cp LEFT JOIN blw_kategori c1 ON (cp.kategori_path=c1.id) LEFT JOIN blw_kategori c2 ON (cp.parent_path=c2.id) LEFT JOIN blw_kategori cd2 ON (cp.parent_path=cd2.id) LEFT JOIN blw_kategori cd1 ON (cp.kategori_path=cd1.id) GROUP BY cp.kategori_path ORDER BY nama ASC")->result_array();
+}
 ?>
 <form id="saveform" method="POST" action="" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?=intval($id)?>" />
@@ -27,6 +33,16 @@
                     <div class="form-group">
                         <label>Nama</label>
                         <input type="text" name="nama" class="form-control" value="<?php echo (isset($r->nama)) ? $r->nama : ""; ?>" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Parent</label>
+                        <select name="parent" id="parent" class="form-control" required>
+                            <option value="">Pilih</option>
+                            <option value="0" <?= $r->parent == '0' ? 'selected' : null ?>>None</option>
+                            <?php foreach ($parent as $p) { ?>
+                                <option value="<?= $p['id'] ?>" <?= $p['id'] == $r->parent ? 'selected' : null ?>><?= $p['nama'] ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
                 </div>
             </div>

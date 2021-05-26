@@ -537,15 +537,52 @@ class Ngadimin extends CI_Controller {
 			}
 
 			$data["nama"] = $_POST["nama"];
+			$data["parent"] = $_POST["parent"];
 			$data["url"] = $this->clean($_POST["nama"]);
-			
-			if($_POST["id"] == 0){
-				$this->db->insert("kategori",$data);
-			}else{
-				$this->db->where("id",$_POST["id"]);
-				$this->db->update("kategori",$data);
+			$parent = $data["parent"];
+
+			if ($_POST["id"] == 0) {
+				$this->db->insert("kategori", $data);
+				$id_kategori = $this->db->insert_id();
+				$level = 0;
+				if ($parent != "0") :
+					$query = $this->db->query("SELECT * FROM blw_kategori_path WHERE kategori_path='$parent'");
+					foreach ($query->result() as $result) {
+						$path = $result->parent_path;
+						$this->db->query("INSERT INTO blw_kategori_path(kategori_path,parent_path,level_path) VALUES ('$id_kategori','$path','$level')");
+						$level++;
+					}
+				endif;
+				$this->db->query("INSERT INTO blw_kategori_path(kategori_path,parent_path,level_path) VALUES ('$id_kategori','$id_kategori',$level)");
+			} else {
+				$this->db->where("id", $_POST["id"]);
+				$this->db->update("kategori", $data);
+				$id_kategori = $_POST["id"];
+				$sql = $this->db->query("SELECT * FROM blw_kategori_path WHERE parent_path='$id_kategori' ORDER BY level_path ASC");
+				if ($sql->num_rows() > 0) {
+					foreach ($sql->result_array() as $kategory_path) {
+						// Hapus semua level yang ada dibawah
+						$this->db->query("DELETE FROM blw_kategori_path WHERE kategori_path='" . $kategory_path['kategori_path'] . "' AND level_path < '" . $kategory_path['level_path'] . "'");
+						$path = array();
+						// Dapatkan level induk yang baru
+						$query = $this->db->query("SELECT * FROM blw_kategori_path WHERE kategori_path='$parent' ORDER BY level_path ASC");
+						foreach ($query->result_array() as $result) {
+							$path[] = $result['parent_path'];
+						}
+						// Dapatkan level yang tersisa saat ini
+						$query = $this->db->query("SELECT * FROM blw_kategori_path WHERE kategori_path='" . $kategory_path['kategori_path'] . "' ORDER BY level_path ASC");
+						foreach ($query->result_array() as $result) {
+							$path[] = $result['parent_path'];
+						}
+						// Gabungkan jalur dengan level baru
+						$level = 0;
+						foreach ($path as $path_id) {
+							$this->db->query("REPLACE INTO blw_kategori_path SET kategori_path='" . $kategory_path['kategori_path'] . "', parent_path='" . $path_id . "', level_path='" . $level . "'");
+							$level++;
+						}
+					}
+				}
 			}
-			
 			redirect("ngadimin/kategori");
 		}
 	}
