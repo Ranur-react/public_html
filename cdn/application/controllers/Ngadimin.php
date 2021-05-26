@@ -581,7 +581,18 @@ class Ngadimin extends CI_Controller {
 							$level++;
 						}
 					}
-				}
+				}  else {
+		            // Hapus semua level yang ada dibawah
+		            $this->db->query("DELETE FROM blw_kategori_path WHERE kategori_path='$kode'");
+		            // Perbaiki untuk level tanpa jalur
+		            $level = 0;
+		            $query = $this->db->query("SELECT * FROM blw_kategori_path WHERE kategori_path='$parent' ORDER BY level_path ASC");
+		            foreach ($query->result_array() as $result) {
+		                $this->db->query("INSERT INTO blw_kategori_path SET kategori_path='" . $id_kategori . "',parent_path='" . $result['parent_path'] . "', level_path='" . $level . "'");
+		                $level++;
+		            }
+		            $this->db->query("REPLACE INTO blw_kategori_path SET kategori_path='" . $id_kategori . "',parent_path='" . $id_kategori . "', level_path='" . $level . "'");
+		        }
 			}
 			redirect("ngadimin/kategori");
 		}
