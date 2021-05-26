@@ -11,6 +11,7 @@
 				<tr>
 					<th scope="col">#</th>
 					<th scope="col">Nama</th>
+					<th scope="col">Parent</th>
 					<th scope="col">Jumlah Produk</th>
 					<th scope="col">Aksi</th>
 				</tr>
@@ -30,6 +31,8 @@
 			if($rows > 0){
 				$no = 1;
 			foreach($pro->result() as $r){
+				$this->db->where('id', $r->parent);
+				$parent = $this->db->get('kategori')->row();
 				$this->db->select("id");
 				$this->db->where("idcat",$r->id);
 				$produk = $this->db->get("produk");
@@ -37,6 +40,7 @@
 			<tr>
 				<td class="text-center"><img style="max-height:70px;" src="<?=base_url("kategori/".$r->icon)?>" /></td>
 				<td><?=$r->nama?></td>
+				<td><?= $parent == null ? 'None' : $parent->nama; ?></td>
 				<td><b><?=$produk->num_rows()?></b></td>
 				<td>
 					<a href="<?php echo site_url("ngadimin/kategoriform/".$r->id); ?>" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Edit</a>
