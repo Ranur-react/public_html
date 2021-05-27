@@ -33,8 +33,13 @@
 			</div>
 			<div class="row">
 			<?php
-				$this->db->where("parent",0);
-				$db = $this->db->get("kategori");
+				// $this->db->where("parent",0);
+				// $db = $this->db->get("kategori");
+				$this->db->from('blw_kategori_path');
+				$this->db->join('blw_kategori','kategori_path=id');
+				$this->db->where('parent_path',40);
+				$this->db->where_not_in('kategori_path', 40);
+				$db = $this->db->get();
 				$no = 1;
 				foreach($db->result() as $r){
 					if($no <= 12){
