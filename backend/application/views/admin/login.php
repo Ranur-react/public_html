@@ -38,7 +38,7 @@
 			</div>
 		</div>
 		<div class="login-footer">
-			Copyrights &copy; <?php echo date("Y"); ?> | <?=$this->func->globalset("nama")?>
+			Copyrights &copy; 2021 | <a style="color: inherit;  text-decoration: inherit; " href="<?= coprightLink() ?>"><?= coprightLable();?> </a>
 		</div>
 	</body>
 	<!-- SCRIPT LOAD -->
