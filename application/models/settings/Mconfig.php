@@ -7,6 +7,14 @@ class Mconfig extends CI_Model
     {
         return $this->db->where('nama_seting', 'pathbackend')->get('settings_m2')->row();
     }
+    public function coprightLink()
+    {
+        return $this->db->where('nama_seting', 'coprightlink')->get('settings_m2')->row();
+    }
+    public function coprightLable()
+    {
+        return $this->db->where('nama_seting', 'coprightlable')->get('settings_m2')->row();
+    }
    
 }
 
