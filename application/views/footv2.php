@@ -102,10 +102,9 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="t-center p-l-15 p-r-15">
 			<div class="t-center p-t-20">
-				 <a style="text-decoration: none; " href="<?= coprightLink() ?>">Copyright © 2021 <?= coprightLable();//ucwords(strtolower($set->nama))?> </a>
+				 <a style="color: inherit;  text-decoration: inherit; " href="<?= coprightLink() ?>">Copyright © 2021 <?= coprightLable();?> </a>
 				<?php if($this->func->demo() == true){ ?> | made with <i class="fas fa-heart text-danger"></i> by Masbil</a><?php } ?>
 			</div>
 		</div>
