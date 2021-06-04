@@ -33,12 +33,12 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 #-------------------------
 # Image
 #-------------------------
-# /assets/img/
-# /kategori/
-# /uploads/
-# /promo/
+/assets/img/
+/kategori/
+/uploads/
+/promo/
 
 #-------------------------
 # Import
 #-------------------------
-# /import/
+/import/
