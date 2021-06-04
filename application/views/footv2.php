@@ -105,6 +105,7 @@
 
 		<div class="t-center p-l-15 p-r-15">
 			<div class="t-center p-t-20">
+				xxxx
 				Copyright © XX <?=date('Y');?> <?=ucwords(strtolower($set->nama))?>
 				<?php if($this->func->demo() == true){ ?> | made with <i class="fas fa-heart text-danger"></i> by Masbil</a><?php } ?>
 			</div>
