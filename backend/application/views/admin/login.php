@@ -23,7 +23,7 @@
 			<div class="login">
 				<form id="login">
 					<div class="form-group">
-						<label for="username">Username</label>
+						<label for="username">UsernameX</label>
 						<input type="text" class="form-control" id="username" name="username" required />
 					</div>
 					<div class="form-group">
@@ -38,7 +38,7 @@
 			</div>
 		</div>
 		<div class="login-footer">
-			Copyrights &copy; 2021 | X<a style="color: inherit;  text-decoration: inherit; " href="<?= coprightLink() ?>"><?= coprightLable();?> </a>
+			Copyrights &copy; 2021 | X <a style="color: inherit;  text-decoration: inherit; " href="<?= coprightLink() ?>"><?= coprightLable();?> </a>
 		</div>
 	</body>
 	<!-- SCRIPT LOAD -->
