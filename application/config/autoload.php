@@ -102,6 +102,7 @@ $autoload['helper'] = array(
 	'security',
 	'string', 
 	'url', 
+	'theme'
 );
 
 /*

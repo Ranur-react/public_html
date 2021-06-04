@@ -224,7 +224,7 @@ class Manage extends CI_Controller {
 	public function konfirmasi(){
 		if($this->func->cekLogin() == true){
 			if(isset($_POST["idbayar"])){
-				$config['upload_path'] = './cdn/konfirmasi/';
+				$config['upload_path'] = './'.backend().'/konfirmasi/';
 				$config['allowed_types'] = 'gif|jpg|jpeg|png';
 				$config['file_name'] = $_SESSION["usrid"].$_POST["idbayar"].date("YmdHis");
 
@@ -276,7 +276,7 @@ class Manage extends CI_Controller {
 	public function konfirmasipreorder(){
 		if($this->func->cekLogin() == true){
 			if(isset($_POST["idbayar"])){
-				$config['upload_path'] = './cdn/konfirmasi/';
+				$config['upload_path'] = './'.backend().'/konfirmasi/';
 				$config['allowed_types'] = 'gif|jpg|jpeg|png';
 				$config['file_name'] = "pre_".$_SESSION["usrid"].$_POST["idbayar"].date("YmdHis");
 

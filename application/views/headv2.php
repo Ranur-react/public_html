@@ -7,7 +7,7 @@ $headerclass = (isset($titel)) ? "header-v4" : "";
 $keranjang = (isset($_SESSION["usrid"]) AND $_SESSION["usrid"] > 0) ? $this->func->getKeranjang() : 0;
 $keyw = $this->db->get("kategori");
 $keywords = "";
-$img = (isset($img)) ? $img : base_url("cdn/assets/img/".$set->favicon);
+$img = (isset($img)) ? $img : base_url(backend()."/assets/img/".$set->favicon);
 $url = (isset($url)) ? $url : site_url();
 $desc = (isset($desc)) ? $desc : "Aplikasi toko online ".$nama;
 $tema = (isset($set->tema)) ? $set->tema: 0;
@@ -20,7 +20,7 @@ foreach($keyw->result() as $key){ $keywords .= ",".$key->nama; }
 	<title><?=$nama?></title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="shortcut icon" type="image/png" href="<?=base_url("cdn/assets/img/".$set->favicon)?>"/>
+	<link rel="shortcut icon" type="image/png" href="<?=base_url(backend()."/assets/img/".$set->favicon)?>"/>
 	<meta name="google-site-verification" content="G35UyHn6lX6mRzyFws0NJYYxHQp_aejuAFbagRKCL7c" />
 	<meta name="description" content="<?=$desc?>" />
 	<!--  Social tags      -->
@@ -128,7 +128,7 @@ foreach($keyw->result() as $key){ $keywords .= ",".$key->nama; }
 		<nav class="navbar bg-dark navbar-expand-lg navbar-dark fixed-top">
 			<div class="container">
 				<a class="navbar-brand" href="<?=site_url()?>">
-					<img src="<?= base_url('cdn/assets/img/'.$set->logo) ?>" height="60" />
+					<img src="<?= base_url(backend().'/assets/img/'.$set->logo) ?>" height="60" />
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
@@ -137,7 +137,7 @@ foreach($keyw->result() as $key){ $keywords .= ",".$key->nama; }
 				<div class="collapse navbar-collapse" id="navbarToggler">
 					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 						<li class="nav-item active">
-							<a class="nav-link" href="<?=site_url()?>"><i class="fas fa-home text-primary"></i> Home</a>
+							<a class="nav-link" href="<?=site_url()?>"><i class="fas fa-home text-primary"></i> Home </a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="<?=site_url("shop")?>"><i class="fas fa-search text-primary"></i> Cari Produk</a>

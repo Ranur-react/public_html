@@ -96,7 +96,7 @@
 						$kurir = explode("|",$set->kurir);
 						for($i=0; $i<count($kurir); $i++){
 							$kur = $this->func->getKurir($kurir[$i],"rajaongkir");
-							echo '<img style="width:28%;margin:2%;" src="'.base_url("cdn/assets/img/kurir/".$kur.".png").'" />';
+							echo '<img style="width:28%;margin:2%;" src="'.base_url(backend()."/assets/img/kurir/".$kur.".png").'" />';
 						}
 					?>
 				</div>

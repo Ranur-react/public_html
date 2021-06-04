@@ -76,14 +76,14 @@
 									if($no == 1){
 							?>
 								<div class="prod-preview">
-									<img src="<?php echo base_url("cdn/uploads/".$res->nama); ?>" alt="IMG-PRODUCT" id="prod-img">
+									<img src="<?php echo base_url(backend()."/uploads/".$res->nama); ?>" alt="IMG-PRODUCT" id="prod-img">
 								</div>
 								<div class="prod-thumb">
 									<div class="m-r-26"></div>
 							<?php
 									}
 							?>
-									<div class="prod-thumb-item" data-thumb="<?php echo base_url("cdn/uploads/".$res->nama); ?>" style="background-image:url('<?php echo base_url("cdn/uploads/".$res->nama); ?>');"></div>
+									<div class="prod-thumb-item" data-thumb="<?php echo base_url(backend()."/uploads/".$res->nama); ?>" style="background-image:url('<?php echo base_url(backend()."/uploads/".$res->nama); ?>');"></div>
 							<?php
 									if($no == $db->num_rows()){ echo "</div>"; }
 									$no++;

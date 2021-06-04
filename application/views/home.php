@@ -14,7 +14,7 @@
 		?>
 			<div class="slider-item" style="cursor:pointer;" data-onclick="<?=$s->link?>">
 				<div class="wrap">
-					<img src="<?= base_url('cdn/promo/'.$s->gambar) ?>" />
+					<img src="<?= base_url(backend().'/promo/'.$s->gambar) ?>" />
 				</div>
 			</div>
 		<?php
@@ -45,7 +45,7 @@
 					if($no <= 12){
 			?>
 				<div class="col-4 col-md-2 m-b-24">
-					<div class="cat-bg" style="background-position:center center;background-image:url('<?=base_url("cdn/kategori/".$r->icon)?>');background-size:cover;" onclick="window.location.href='<?=site_url("kategori/".$r->url)?>'">
+					<div class="cat-bg" style="background-position:center center;background-image:url('<?=base_url(backend()."/kategori/".$r->icon)?>');background-size:cover;" onclick="window.location.href='<?=site_url("kategori/".$r->url)?>'">
 					</div>
 					<div class="cat-nama"><?=ucwords($r->nama)?></div>
 				</div>
@@ -101,7 +101,7 @@
 				?>
 					<div class="col-md-4 iklans m-b-20">
 						<a href="<?=$iklan->link?>">
-							<img src="<?= base_url('cdn/promo/'.$iklan->gambar) ?>" />
+							<img src="<?= base_url(backend().'/promo/'.$iklan->gambar) ?>" />
 						</a>
 					</div>
 				<?php
@@ -240,7 +240,7 @@
 						<div class="m-b-20 testimoni-komentar">" <?=$r->komentar?> "</div>
 						<div class="row m-lr-0">
 							<div class="col-3 p-lr-0">
-								<div class="testimoni-img" style="background-position:center center;background-image:url('<?=base_url("cdn/uploads/".$r->foto)?>');background-size:cover;"></div>
+								<div class="testimoni-img" style="background-position:center center;background-image:url('<?=base_url(backend()."/uploads/".$r->foto)?>');background-size:cover;"></div>
 							</div>
 							<div class="col-9 p-r-4">
 								<div class="font-bold text-primary fs-14 ellipsis"><?=$r->nama?></div>
@@ -275,7 +275,7 @@
 			?>
 				<div class="col-md-4 blog-wrap">
 					<div class="blog" onclick="window.location.href='<?=site_url('blog/'.$res->url)?>'">
-						<div class="img" style="background-image: url('<?=base_url("cdn/uploads/".$res->img)?>')"></div>
+						<div class="img" style="background-image: url('<?=base_url(backend()."/uploads/".$res->img)?>')"></div>
 						<div class="text">
 							<div class="titel">
 								<?=$this->func->potong($res->judul,80,"...")?>
@@ -310,7 +310,7 @@
 
 	<?php $notif_booster = $this->func->getSetting("notif_booster"); if($notif_booster == 1){ ?>
 	<div id="toaster" class="toaster row col-md-4" style="display:none;">
-		<div class="col-3 img p-lr-6"><img id="toast-foto" src="<?=base_url("cdn/uploads/520200116140232.jpg")?>" /></div>
+		<div class="col-3 img p-lr-6"><img id="toast-foto" src="<?=base_url(backend()."/uploads/520200116140232.jpg")?>" /></div>
 		<div class="col-9 p-lr-6">
 			<b id="toast-user">USER</b> telah membeli<br/>
 			<b id="toast-produk">Nama Produknya</b>

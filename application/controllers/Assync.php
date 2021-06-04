@@ -1240,7 +1240,7 @@ class Assync extends CI_Controller {
 						<b>Rp. ".$this->func->formUang($total)."</b> Invoice ID: <b>".$invoice."</b>
 						<br/>&nbsp;<br/>&nbsp;<br/>
 						Cek Pesanan Pembeli di <b>Dashboard Admin ".$toko->nama."</b><br/>
-						<a href='".site_url("cdn")."'>Klik Disini</a>
+						<a href='".site_url(backend())."'>Klik Disini</a>
 					";
 					$this->func->sendEmail($toko->email,$toko->nama." - Pesanan Baru",$pesan,"Pesanan Baru di ".$toko->nama);
 					$pesan = "

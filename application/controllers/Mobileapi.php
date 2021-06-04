@@ -179,7 +179,7 @@ class Mobileapi extends CI_Controller {
 				if($db->num_rows() > 0){
 					foreach($db->result() as $r){
 						$data[] = array(
-							"foto"	=> base_url("cdn/promo/".$r->gambar),
+							"foto"	=> base_url(backend()."/promo/".$r->gambar),
 							"link"	=> $r->link
 						);
 					}
@@ -212,7 +212,7 @@ class Mobileapi extends CI_Controller {
 				if($db->num_rows() > 0){
 					foreach($db->result() as $r){
 						$data[] = array(
-							"foto"	=> base_url("cdn/kategori/".$r->icon),
+							"foto"	=> base_url(backend()."/kategori/".$r->icon),
 							"url"	=> $r->url,
 							"nama"	=> ucwords($r->nama),
 							"id"	=> $r->id
@@ -783,7 +783,7 @@ class Mobileapi extends CI_Controller {
 					<b>Rp. ".$this->func->formUang($total)."</b> Invoice ID: <b>".$invoice."</b>
 					<br/>&nbsp;<br/>&nbsp;<br/>
 					Cek Pesanan Pembeli di Dashboard Admin ".$toko->nama."<br/>
-					<a href='".site_url("cdn")."'>Klik Disini</a>
+					<a href='".site_url(backend())."'>Klik Disini</a>
 				";
 				$this->func->sendEmail($toko->email,$toko->nama." - Pesanan Baru",$pesan,"Pesanan Baru di ".$toko->nama);
 				$pesan = "
@@ -2273,7 +2273,7 @@ class Mobileapi extends CI_Controller {
 						$dbs = $this->db->get("upload");
 						$foto = array();
 						foreach($dbs->result() as $rs){
-							$foto[]["foto"] = base_url("cdn/uploads/".$rs->nama);
+							$foto[]["foto"] = base_url(backend()."/uploads/".$rs->nama);
 						}
 						$this->db->where("idproduk",$_GET["pid"]);
 						//$this->db->group_by("warna");

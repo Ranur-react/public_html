@@ -171,7 +171,7 @@ class Global_data extends CI_Model{
 	}
 
 	function getFoto($id,$kat="utama"){
-		$server = base_url('cdn/uploads');
+		$server = base_url(backend().'/uploads');
 		$this->db->where("idproduk",$id);
 		if($kat == "utama"){
 			$this->db->where("jenis",1);
