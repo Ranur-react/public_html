@@ -33,12 +33,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="kolom8">
 			<div class="maintenance">
 				<i class="fa fa-cogs"></i> &nbsp;<b>SYSTEM UNDER MAINTENANCE</b><br/><br/>
-				Kepada para warga sekalian,<br/>
-				Dalam upaya kami meningkatkan kualitas layanan, Beliwarga saat ini sedang melakukan <i>maintenance.</i><br/>
-				Selama masa <i>maintenance</i>, halaman ini tidak dapat diakses sementara waktu. Kami mohon maaf atas 
-				ketidaknyamanannya dan terima kasih atas pengertiannya.<br/><br/>
-				Kami akan segera kembali. 
-				Terima kasih.<br/><br/>
+				Dear we customer<br/>
+				In our effort to improve service quality, Gunung Mas is currently doing <i>maintenance.</i><br/>
+During the <i>maintenance</i> period, this page is temporarily inaccessible. We apologize for
+inconvenience and thank you for understanding.<br/><br/>
+We'll be right back. Call us at <a href="https://wa.me/+6283182647716">083182647716</a>  (CV. Forber Technology Indonesia) to follow up
+Thank you.<br/><br/> 
 				<a href="http://beliwarga.com"><b>Tim Beliwarga</b></a>
 			</div>
 		</div>
