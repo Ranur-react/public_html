@@ -39,7 +39,7 @@ During the <i>maintenance</i> period, this page is temporarily inaccessible. We 
 inconvenience and thank you for understanding.<br/><br/>
 We'll be right back. Call us at <a href="https://wa.me/+6283182647716">083182647716</a>  (CV. Forber Technology Indonesia) to follow up
 Thank you.<br/><br/> 
-				<a href="barangmudo.com"><b>Tim Forbertech.id</b></a>
+				<a href="https://barangmudo.com/"><b>Tim Forbertech.id</b></a>
 			</div>
 		</div>
 	</div>
