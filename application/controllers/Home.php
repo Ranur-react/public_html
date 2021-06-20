@@ -25,6 +25,10 @@ class Home extends CI_Controller {
 		$this->load->view("home");
 		$this->load->view("footv2");
 	}
+	public function mintananceStatus()
+	{
+		$this->load->view("maintenis");
+	}
 
 	public function wishlist(){
 		$this->load->view("headv2");
