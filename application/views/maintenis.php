@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body onresize="resizePesan()">
 	<div class="maintenis">
 		<div class="kolom4">
-			<img style="width:100%;" src="<?php echo base_url("assets/img/maintenance2.gif"); ?>" />
+			<img style="width:100%;" src="https://images.unsplash.com/photo-1618522285348-1357236b7121?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" />
 		</div>
 		<div class="kolom8">
 			<div class="maintenance">
@@ -39,7 +39,7 @@ During the <i>maintenance</i> period, this page is temporarily inaccessible. We 
 inconvenience and thank you for understanding.<br/><br/>
 We'll be right back. Call us at <a href="https://wa.me/+6283182647716">083182647716</a>  (CV. Forber Technology Indonesia) to follow up
 Thank you.<br/><br/> 
-				<a href="http://beliwarga.com"><b>Tim Beliwarga</b></a>
+				<a href="barangmudo.com"><b>Tim Forbertech.id</b></a>
 			</div>
 		</div>
 	</div>
